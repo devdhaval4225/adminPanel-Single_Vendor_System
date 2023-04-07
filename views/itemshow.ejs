@@ -139,12 +139,12 @@
         <div class="row gx-4 mb-2">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="/uploads/<%= one.image %>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img src="/uploads/<%= itemID.image %>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
-              <h5 class="mb-1"><%= one.username %></h5>
+              <h5 class="mb-1"></h5>
             </div>
           </div>
         </div>
@@ -155,7 +155,6 @@
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
-                      <h6 class="mb-0">Profile Information</h6>
                     </div>
                     <div class="col-md-4 text-end">
                       <a href="javascript:;"></a>
@@ -163,13 +162,11 @@
                   </div>
                 </div>
                 <div class="card-body p-3">
-                  <p class="text-sm">Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).</p>
                   <hr class="horizontal gray-light my-4">
                   <ul class="list-group">
-                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; <%= one.name %></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; <%= one.mobile %></li>
-                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; <%= one.email %></li>
-                    <!-- <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA</li> -->
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Item Name: </strong> &nbsp;  <%= itemID.itemname %></li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Price:</strong> &nbsp;<%= itemID.price %> </li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Category:</strong> &nbsp;<%= itemID.category %> </li>
                     <li class="list-group-item border-0 ps-0 pb-0">
                       <strong class="text-dark text-sm">Social:</strong> &nbsp;
                       <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="https://facebook.com">
@@ -191,10 +188,6 @@
       </div>
     </div>
   </div>
-
-
-
-
   <!--   Core JS Files   -->
   <script src="/js/core/popper.min.js"></script>
   <script src="/js/core/bootstrap.min.js"></script>

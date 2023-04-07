@@ -38,6 +38,8 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -66,7 +68,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="tables">
+          <a class="nav-link text-white " href="http://localhost:3000/tables">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -74,15 +76,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="billing">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
-            </div>
-            <span class="nav-link-text ms-1">Billing</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="item">
+          <a class="nav-link text-white " href="http://localhost:3000/item">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -90,7 +84,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="category">
+          <a class="nav-link text-white " href="http://localhost:3000/category">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -98,7 +92,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="template">
+          <a class="nav-link text-white " href="http://localhost:3000/template">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -106,7 +100,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="item-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/item-insert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -114,7 +108,7 @@
           </a>
         </li>
       <li class="nav-item">
-          <a class="nav-link text-white " href="category-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/category-insert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -125,15 +119,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="profile">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="sign-in">
+          <a class="nav-link text-white " href="http://localhost:3000/sign-in">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
@@ -148,7 +134,7 @@
     <div class="card-body">
       <form role="form" action="/insert" method="POST" class="text-start">
         <div class="input-group input-group-outline my-3">
-          <label class="form-label">Name</label>
+          <label class="form-label" >Name</label>
           <input type="name" name="name" class="form-control">
         </div>
         <div class="input-group input-group-outline mb-3">

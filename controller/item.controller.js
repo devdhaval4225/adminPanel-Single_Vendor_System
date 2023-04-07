@@ -24,7 +24,7 @@ exports.insertItem = async (req, res) => {
         }
 
     } catch (error) {
-        console.log("::ERROR::", error);
+        console.log("::item-insertData-ERROR::", error);
         res.status(500).json({
             message: "something went wrong",
             status: 500
@@ -59,11 +59,11 @@ exports.updateItem = async (req, res, next) => {
                     new: true
                 }
             );
-            req.itemUpdate = updateData
-            next();
+            res.redirect("/item");
+            console.log("::updateData::", updateData);
         }
     } catch (error) {
-        console.log("::ERROR::", error);
+        console.log("::item-updateData-ERROR::", error);
         res.status(500).json({
             message: "something went wrong",
             status: 500
@@ -74,18 +74,11 @@ exports.updateItem = async (req, res, next) => {
 exports.deleteItem = async (req, res, next) => {
     try {
         const id = req.params.id
-        if (id == null) {
-            res.status(404).json({
-                message: "item not foundd",
-                status: 404
-            })
-        } else {
-            const deleteData = await Item.findByIdAndDelete({ _id: id });
-            req.deleteItem = deleteData
-            next();
-        }
+        const deleteData = await Item.findByIdAndDelete({ _id: id });
+        res.redirect("/item");
+        console.log("::deleteData::", deleteData);
     } catch (error) {
-        console.log("::ERROR::", error);
+        console.log("::item-deleteItem-ERROR::", error);
         res.status(500).json({
             message: "something went wrong",
             status: 500
@@ -100,7 +93,7 @@ exports.itemShow = async (req, res, next) => {
         next();
 
     } catch (error) {
-        console.log("::ERROR::", error);
+        console.log("::item-itemShow-ERROR::", error);
         res.status(500).json({
             message: "something went wrong",
             status: 500
@@ -108,16 +101,19 @@ exports.itemShow = async (req, res, next) => {
     }
 }
 
-exports.itemCount = async (req, res) => {
+exports.itemById = async (req, res, next) => {
     try {
-        const countData = await Item.find().count();
+        const id = req.params.id
+        const countData = await Item.findById({ _id: id });
         console.log("::countData::", countData);
-        res.status(200).json({
-            message  :"total Item",
-            status : 200,
-            data : countData
-        })
-    } catch (error) {
+        req.itembyid = countData
+        next();
 
+    } catch (error) {
+        console.log("::item-itemById-ERROR::", error);
+        res.status(500).json({
+            message: "something went wrong",
+            status: 500
+        })
     }
 }

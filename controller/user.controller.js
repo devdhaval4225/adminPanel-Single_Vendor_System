@@ -1,5 +1,6 @@
-const { name } = require("ejs");
 const User = require("../model/user.model");
+const Item = require("../model/item.model");
+const Cate = require("../model/category.model");
 
 
 exports.insert = async (req, res) => {
@@ -8,6 +9,7 @@ exports.insert = async (req, res) => {
         const checkEmail = await User.findOne({ email: email });
         if (checkEmail == null) {
             const image = req.file.filename
+            console.log("::image::", image);
             const insertUser = new User({
                 image: image,
                 name: name,
@@ -15,9 +17,8 @@ exports.insert = async (req, res) => {
                 email: email,
                 mobile: mobile
             });
-            console.log("::insertUser::", insertUser);
             const saveData = await insertUser.save();
-            // res.render("dashboard.ejs")
+            res.render("dashboard.ejs")
         } else {
             res.status(404).json({
                 message: "Email already exitst.",
@@ -34,30 +35,39 @@ exports.insert = async (req, res) => {
     }
 }
 
-exports.edit = async (req, res) => {
-
+exports.edit = async (req, res, next) => {
     try {
         const id = req.params.id
-        const updateData = await User.findByIdAndUpdate(
-            {
-                _id: id
-            },
-            {
-                $set: {
-                    name: name,
-                    username: username,
-                    email: email,
-                    mobile: mobile
-                }
-            },
-            {
-                new: true
-            });
-        res.status(200).json({
-            message: "update data",
-            status: 200,
-            data: updateData
-        })
+        const { name, username, email, mobile } = req.body;
+        const checkEmail = await User.findOne({ email: email });
+        if (checkEmail == null) {
+            // const image = req.file.filename
+            const updateData = await User.findByIdAndUpdate(
+                {
+                    _id: id
+                },
+                {
+                    $set: {
+                        // image : image, 
+                        name: name,
+                        username: username,
+                        email: email,
+                        mobile: mobile
+                    }
+                },
+                {
+                    new: true
+                });
+            console.log("::updateData::", updateData);
+            req.edit = updateData
+            next();
+        } else {
+            res.status(404).json({
+                message: "email already exitst.",
+                status: 404
+            })
+        }
+
     } catch (error) {
         console.log("::user-edit-ERROR::", error);
         res.status(500).json({
@@ -81,24 +91,15 @@ exports.show = async (req, res, next) => {
     }
 }
 
-exports.userDelete = async (req, res) => {
+exports.userDelete = async (req, res, next) => {
     try {
-        const id = req.user._id
+        const id = req.params.id
         const deleteData = await User.findByIdAndDelete({ _id: id })
-        if (deleteData == null) {
-            res.status(404).json({
-                message: "user not exitst.",
-                status: 404
-            })
-        } else {
-            res.status(200).json({
-                message: "user delete sucessfully",
-                status: 200
-            })
-        }
+        res.redirect("/tables")
 
+        console.log("::deleteData::", deleteData);
     } catch (error) {
-        console.log("::user-delete-ERROR::", error);
+        console.log("::user-userDelete-ERROR::", error);
         res.status(500).json({
             message: "SOMETHING WENT WRONG",
             status: 500
@@ -106,17 +107,32 @@ exports.userDelete = async (req, res) => {
     }
 }
 
-exports.userCount = async (req, res) => {
+exports.totalCount = async (req, res, next) => {
     try {
         const countUser = await User.find().count();
-        console.log("::countUser::", countUser);
-        res.status(200).json({
-            message: "total Item",
-            status: 200,
-            data: countUser
-        })
+        const countItem = await Item.find().count();
+        const countCate = await Cate.find().count();
+
+        const total = {countUser,countItem,countCate}
+        req.total = total;
+        next();
     } catch (error) {
-        console.log("::user-delete-ERROR::", error);
+        console.log("::user-totalCount-ERROR::", error);
+        res.status(500).json({
+            message: "SOMETHING WENT WRONG",
+            status: 500
+        })
+    }
+}
+
+exports.showOne = async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const oneUser = await User.findById({ _id: id });
+        req.nOne = oneUser
+        next();
+    } catch (error) {
+        console.log("::user-showOne-ERROR::", error);
         res.status(500).json({
             message: "SOMETHING WENT WRONG",
             status: 500

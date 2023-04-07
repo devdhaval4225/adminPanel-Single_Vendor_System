@@ -15,7 +15,33 @@ exports.insertCategory = async (req, res, next) => {
         res.render("dashboard.ejs");
 
     } catch (error) {
-        console.log("::ERROR::", error);
+        console.log("::category-insertCategory-ERROR::", error);
+        res.status(500).json({
+            message: "something went wrong",
+            status: 500
+        })
+    }
+}
+
+exports.categoryEdit = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const editCate = await Category.findByIdAndUpdate(
+            {
+                _id : id
+            },
+            {
+                $set:{
+                    status : req.body.status
+                }   
+            },
+            {
+                new : true
+            });
+            res.redirect("/category");
+            console.log("::editCate::", editCate);
+    } catch (error) {
+        console.log("::category-categoryEdit-ERROR::", error);
         res.status(500).json({
             message: "something went wrong",
             status: 500
@@ -29,7 +55,7 @@ exports.showCategory = async (req, res, next) => {
         req.category = findData
         next();
     } catch (error) {
-        console.log("::ERROR::", error);
+        console.log("::category-showCategory-ERROR::", error);
         res.status(500).json({
             message: "something went wrong",
             status: 500
@@ -37,20 +63,18 @@ exports.showCategory = async (req, res, next) => {
     }
 }
 
-exports.deleteCategory = async(req, res) => {
+exports.deleteCategory = async (req, res) => {
     try {
         const id = req.params.id
-        const deleteData = await Category.findByIdAndDelete({_id : id})
-        if (deleteData == null) {
-            res.status(404).json({
-                message : "category not found",
-                status : 404
-            })
-        } else {
-            req.render("dashboard.ejs");
-        }
-        
+        const deleteData = await Category.findByIdAndDelete({ _id: id })
+
+        res.redirect("/category");
+        console.log("::deleteData::", deleteData);
     } catch (error) {
-        
+        console.log("::category-deleteCategory-ERROR::", error);
+        res.status(500).json({
+            message: "something went wrong",
+            status: 500
+        })
     }
 }

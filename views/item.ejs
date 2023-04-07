@@ -68,7 +68,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="tables">
+          <a class="nav-link text-white " href="http://localhost:3000/tables">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -76,15 +76,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="billing">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
-            </div>
-            <span class="nav-link-text ms-1">Billing</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="item">
+          <a class="nav-link text-white " href="http://localhost:3000/item">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -92,7 +84,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="category">
+          <a class="nav-link text-white " href="http://localhost:3000/category">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -100,7 +92,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="template">
+          <a class="nav-link text-white " href="http://localhost:3000/template">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -108,7 +100,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="item-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/item-insert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -116,7 +108,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="category-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/category-insert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -127,15 +119,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="profile">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="sign-in">
+          <a class="nav-link text-white " href="http://localhost:3000/sign-in">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
@@ -165,18 +149,12 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Item Name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
-                      <th class="text-secondary opacity-7"></th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Setting</th>
                     </tr>
                   </thead>
                   <tbody>
 
-
-
                     <% for(var i=0; i < item.length; i++) { %>
-
-
                         <tr>
                           <td>
                             <div class="d-flex px-2 py-1">
@@ -190,18 +168,9 @@
                               <h6 class="mb-0 text-sm"><%= item[i].itemname %></h6>
                             </td>
                           </div>
-                          <td>
-                            <p class="text-xs text-secondary mb-0"><%= item[i].price %></p>
-                          </td>
-                          <td>
-                            <p class="text-xs font-weight-bold mb-0"><%= item[i].category %></p>
-                          </td>
                           <td class="align-middle">
-                            <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                              data-original-title="Edit user"><i class="material-icons text-sm me-2">edit</i>Edit</a>
-                            <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                              data-original-title="Edit user"><i
-                                class="material-icons text-sm me-2">delete</i>Delete</a>
+                            <a href="http://localhost:3000/itemshow/<%= item[i].id %>"  class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> &nbsp; | <i class="fa-sharp fa-solid fa-eye"></i> View</a>
+                            <a href="http://localhost:3000/item/<%= item[i].id %>"  class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> &nbsp; | <i class="material-icons text-sm me-2">delete </i> Delete</a>
                           </td>
                         </tr>
                     <% } %>

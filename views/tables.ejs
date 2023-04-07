@@ -75,15 +75,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="billing">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
-            </div>
-            <span class="nav-link-text ms-1">Billing</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="item">
+          <a class="nav-link text-white " href="http://localhost:3000/item">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -91,7 +83,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="category">
+          <a class="nav-link text-white " href="http://localhost:3000/category">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -99,7 +91,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="template">
+          <a class="nav-link text-white " href="http://localhost:3000/template">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -107,7 +99,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="item-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/item-insert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -115,7 +107,7 @@
           </a>
         </li>
       <li class="nav-item">
-          <a class="nav-link text-white " href="category-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/category-insert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -126,15 +118,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="profile">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="sign-in">
+          <a class="nav-link text-white " href="http://localhost:3000/sign-in">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
@@ -163,10 +147,10 @@
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Username</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                      <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mobile</th>
-                      <th class="text-secondary opacity-7"></th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mobile</th> -->
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Setting</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -175,9 +159,9 @@
                     <% for(var i=0; i < data.length; i++) { %>
                     <tr>
                       <td>
-                        <div class="d-flex px-2 py-1">
+                        <div class="d-flex px-1 py-1">
                           <div>
-                            <img src="/uploads/<%= data[i].image %>" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                            <img src="/uploads/<%= data[i].image %>" class="avatar avatar-sm me-3 border-radius-lg" style="margin-left: 10px;" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <td>
@@ -186,18 +170,11 @@
                           </div>
                         </div>
                       </td>
-                      <td>
-                        <p class="text-xs text-secondary mb-0"><%= data[i].email %></p>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0"><%= data[i].name %></p>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><%= data[i].mobile %></span>
-                      </td>
+                 
                       <td class="align-middle">
-                        <a href="user" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">edit</i>Edit</a>
-                        <a href="#" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">delete</i>Delete</a>
+                        <a href="http://localhost:3000/userEdit/<%= data[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">edit</i>Edit</a>
+                        <a href="http://localhost:3000/tables/<%= data[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">| delete </i>Delete </a>
+                        <a href="http://localhost:3000/profile/<%= data[i].id %>"  class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> &nbsp; | <i class="fa-sharp fa-solid fa-eye"></i> View</a>
                       </td>
                     </tr>
                     
@@ -212,43 +189,6 @@
         </div>
       </div>
 
-
-
-      <footer class="footer py-4  ">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
-                ©
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
-                    Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                    target="_blank">License</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   </main>
   <div class="fixed-plugin">
