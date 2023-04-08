@@ -12,7 +12,7 @@ router.get('/profile/:id', showOne);
 
 
 
-const { itemShow, itemById ,deleteItem } = require("../controller/item.controller");
+const { Iteminsert, itemShow, itemById, updateItem, deleteItem } = require("../controller/item.controller");
 
 const { showCategory, deleteCategory } = require("../controller/category.controller");
 
@@ -28,10 +28,17 @@ router.get('/', verifyUser, totalCount, async (req, res) => {
 router.get('/category-insert', verifyUser, function (req, res, next) {
   res.render('categoryInsert.ejs', { title: 'Express' });
 });
-
-router.get('/item-insert', verifyUser, function (req, res, next) {
-  res.render('itemInsert.ejs', { title: 'Express' });
+//!  ======================================================================================================================================
+//!  ======================================================================================================================================
+//!  ======================================================================================================================================
+router.get('/itemInsert', verifyUser, Iteminsert,function (req, res, next) {
+  res.render('itemInsert.ejs');
 });
+//!  ======================================================================================================================================
+//!  ======================================================================================================================================
+//!  ======================================================================================================================================
+
+
 
 router.get('/user', verifyUser, function (req, res, next) {
   res.render('user.ejs', { title: 'Express' });
@@ -68,14 +75,16 @@ router.get('/category', verifyUser, showCategory, async (req, res) => {
 
 /* ======================================== Edit By Id ======================================== */
 //? USER
-router.get('/userEdit/:id', verifyUser, edit,  function (req, res, next) {
-  editUser = req.edit
-  res.render('userEdit.ejs' , { editUser });
+router.get('/user/:id', verifyUser, edit,  function (req, res, next) {
+  updateData = req.edit
+  console.log("::updateData:::::$%^&*(*&^#$%^&*()):::::", updateData);
+  console.log(":::65+4654654%&^%&^:::::", req.edit);
+  res.render('userEdit.ejs' , { updateData });
 });
 
 
 //? ITEM
-router.get('/itemEdit/:id', verifyUser,   function (req, res, next) {
+router.get('/itemEdit/:id', verifyUser, updateItem,  function (req, res, next) {
   editItem = req.itemedit
   res.render('item.ejs' , { editItem });
 });

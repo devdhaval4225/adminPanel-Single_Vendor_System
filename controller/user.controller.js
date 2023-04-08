@@ -39,16 +39,14 @@ exports.edit = async (req, res, next) => {
     try {
         const id = req.params.id
         const { name, username, email, mobile } = req.body;
-        const checkEmail = await User.findOne({ email: email });
-        if (checkEmail == null) {
-            // const image = req.file.filename
+            // const images = req.file.filename
             const updateData = await User.findByIdAndUpdate(
                 {
                     _id: id
                 },
                 {
                     $set: {
-                        // image : image, 
+                        // image: images,
                         name: name,
                         username: username,
                         email: email,
@@ -58,15 +56,10 @@ exports.edit = async (req, res, next) => {
                 {
                     new: true
                 });
-            console.log("::updateData::", updateData);
             req.edit = updateData
+            console.log("::req.edit::", req.edit);
             next();
-        } else {
-            res.status(404).json({
-                message: "email already exitst.",
-                status: 404
-            })
-        }
+            console.log("::updateData::", updateData);
 
     } catch (error) {
         console.log("::user-edit-ERROR::", error);
@@ -113,7 +106,7 @@ exports.totalCount = async (req, res, next) => {
         const countItem = await Item.find().count();
         const countCate = await Cate.find().count();
 
-        const total = {countUser,countItem,countCate}
+        const total = { countUser, countItem, countCate }
         req.total = total;
         next();
     } catch (error) {

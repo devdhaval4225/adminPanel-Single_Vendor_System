@@ -2,14 +2,14 @@ const router = require("express").Router();
 const upload = require("../utils/upload.image");
 
 const {
-    insertItem,
+    Iteminsert,
     updateItem,
     deleteItem,
     itemShow,
     itemById,
 } = require("../controller/item.controller");
 
-router.post('/itemInsert', upload.single("image"), insertItem);
+router.post('/itemInsert', upload.single("image"), Iteminsert);
 router.put('/item-update/:id', upload.single("image"), updateItem);
 router.delete('/item-delete/:id', deleteItem);
 router.get('/list', itemShow);

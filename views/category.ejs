@@ -20,9 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
-  <title>
-    Material Dashboard 2 by Creative Tim
-  </title>
+  <title>Category</title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -69,7 +67,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="tables">
+          <a class="nav-link text-white " href="http://localhost:3000/tables">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -77,7 +75,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="item">
+          <a class="nav-link text-white " href="http://localhost:3000/item">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
@@ -85,7 +83,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="category">
+          <a class="nav-link text-white " href="http://localhost:3000/category">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
@@ -93,7 +91,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="template">
+          <a class="nav-link text-white " href="http://localhost:3000/template">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -101,7 +99,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="item-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/itemInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -109,7 +107,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="category-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/categoryInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -120,7 +118,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="sign-in">
+          <a class="nav-link text-white " href="http://localhost:3000/sign-in">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
@@ -170,7 +168,7 @@
                           <span class="badge badge-sm bg-gradient-success"><%= categoryAll[i].status %></span>
                         </td>
                         <td class="align-middle">
-                          <a href="http://localhost:3000/category/<%= categoryAll[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">edit</i>Edit</a>
+                          <a href="http://localhost:3000/category/<%= categoryAll[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-edit fa-lg mx-1"></i>Edit</a>
                           <a href="http://localhost:3000/category/<%= categoryAll[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">| delete </i>Delete </a>
                         </td>
                       </tr>

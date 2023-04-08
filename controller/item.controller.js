@@ -2,17 +2,18 @@ const Item = require("../model/item.model");
 const Category = require("../model/category.model");
 
 
-exports.insertItem = async (req, res) => {
+exports.Iteminsert = async (req, res, next) => {
     try {
         const { itemname, price, category } = req.body
         const findCate = await Category.findOne({ name: category });
         if (findCate == null) {
             res.status(404).json({
-                message: "category not foundd",
+                message: "category not found",
                 status: 404
             })
         } else {
-            let images = req.file.filename;
+            const images = req.file.filename;
+            console.log("::images::", images);
             const insertData = new Item({
                 image: images,
                 itemname: itemname,
@@ -20,7 +21,13 @@ exports.insertItem = async (req, res) => {
                 category: category
             });
             const saveData = await insertData.save();
-            res.render("dashboard.ejs")
+            // res.status(201).json({
+            //     message : "item inserted",
+            //     status : 201,
+            //     data : saveData
+            // })
+            res.redirect("/item")
+            // req.newItem = saveData
         }
 
     } catch (error) {
@@ -35,21 +42,23 @@ exports.insertItem = async (req, res) => {
 exports.updateItem = async (req, res, next) => {
     try {
         const id = req.params.id
-        const { image, itemname, price, category } = req.body
+        const { itemname, price, category } = req.body
         const findCate = await Category.findOne({ name: category });
         if (findCate == null) {
             res.status(404).json({
-                message: "category not foundd",
+                message: "Category not Found",
                 status: 404
             })
         } else {
+            const images = req.file.filename
+            console.log("::iamge::", images);
             const updateData = await Item.findByIdAndUpdate(
                 {
                     _id: id
                 },
                 {
                     $set: {
-                        image: image,
+                        image: images,
                         itemname: itemname,
                         price: price,
                         category: category
@@ -59,8 +68,14 @@ exports.updateItem = async (req, res, next) => {
                     new: true
                 }
             );
-            res.redirect("/item");
-            console.log("::updateData::", updateData);
+            // req.updateitem = updateData
+            // next();
+            // res.redirect("/item");
+            res.status(200).json({
+                message: "update item",
+                status: 200,
+                data: updateData
+            });
         }
     } catch (error) {
         console.log("::item-updateData-ERROR::", error);

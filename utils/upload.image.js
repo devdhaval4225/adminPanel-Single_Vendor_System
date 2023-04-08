@@ -3,9 +3,11 @@ const path = require('path')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        console.log(":::::!#$%^%%#@!#$%^$#@!#$%::::", file);
         cb(null, 'public/uploads');
     },
     filename: (req, file, cb) => {
+        console.log(":::::::::::::::", file);
         let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         let fileName = "";
         for (let i = 1; i <= 6; i++) {

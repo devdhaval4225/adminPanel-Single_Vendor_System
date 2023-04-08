@@ -20,9 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
-  <title>
-    Material Dashboard 2 by Creative Tim
-  </title>
+  <title>User Edit</title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -99,7 +97,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/item-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/itemInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -107,7 +105,7 @@
           </a>
         </li>
       <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/category-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/categoryInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -130,45 +128,34 @@
   </aside>
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-
     <div class="card-body">
-      <form role="form" action="/user<%= editUser.id %>" method="GET" class="text-start">
-        <%= editUser.name %>
-        <br>
-        <%= editUser.username %>
-        <br>
-        <%= editUser.email %>
-        <br>
-        <%= editUser.mobile %>
-        <br>
-        <%= editUser.image %>
+      <form role="form" action="/user/<%= updateData.id %>" method="PUT" class="text-start">
 
         <div class="input-group input-group-outline my-3">
-          <label class="form-label" >Name</label>
-          <input type="name"  name="name" id="name" class="form-control">
+          <label class="form-label" for="name" ></label>
+          <input type="name" name="name" value="<%= updateData.name %>" id="name" class="form-control">
         </div>
         <div class="input-group input-group-outline my-3">
-          <label class="form-label">Username</label>
-          <input type="text" <%= editUser.username %> name="username" id="username" class="form-control">
+          <label class="form-label" for="username"></label>
+          <input type="text" name="username" value="<%= updateData.username %>" id="username" class="form-control">
         </div>
         <div class="input-group input-group-outline my-3">
-          <label class="form-label">Email</label>
-          <input type="email" <%= editUser.email %> name="email" id="email" class="form-control">
+          <label class="form-label" for="email"></label>
+          <input type="email" name="email" value="<%= updateData.email %>" id="email" class="form-control">
         </div>
         <div class="input-group input-group-outline mb-3">
-          <label class="form-label">Mobile Number</label>
-          <input type="mobile" <%= editUser.mobile %> name="mobile" id="mobile" class="form-control">
+          <label class="form-label" for="mobile"></label>
+          <input type="mobile" name="mobile" value="<%= updateData.mobile %>" id="mobile" class="form-control">
         </div>
+        <%= updateData.image %>
         <div class="input-group input-group-outline my-3">
-          <input type="file" <%= editUser.image %> name="image" id="image" class="form-control">
+          <input type="file" value="<%= updateData.image %>" name="image" id="image" class="form-control">
         </div>
-        <form action="user/<%= editUser.id %>" method="PUT">
           <div class="text-center">
-            <button type="submit" value="submit"  class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+            <button type="submit" value="Submit"  class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
           </div>
-        </form>
       </form>
-    </div>
+    </div>       
   </main>
 
 

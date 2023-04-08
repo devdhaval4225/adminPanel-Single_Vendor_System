@@ -20,9 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
-  <title>
-    Material Dashboard 2 by Creative Tim
-  </title>
+  <title>Item Edit</title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -99,7 +97,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/item-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/itemInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -107,7 +105,7 @@
           </a>
         </li>
       <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/category-insert">
+          <a class="nav-link text-white " href="http://localhost:3000/categoryInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -132,7 +130,7 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
     <div class="card-body">
-        <form role="form" action="/item/item-insert" method="POST" class="text-start">
+        <form role="form" action="/item/item-update/<%= editItem.id %>" method="POST" class="text-start">
             <div class="input-group input-group-outline my-3">
               <label class="form-label">Name</label>
               <input type="name" name="name" class="form-control">
