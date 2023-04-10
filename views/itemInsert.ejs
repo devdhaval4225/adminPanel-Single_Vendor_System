@@ -90,7 +90,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/template">
+          <a class="nav-link text-white " href="http://localhost:3000/contectus">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <span class="nav-link-text ms-1">Contact us</span>
+          </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="http://localhost:3000/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -130,7 +138,7 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
     <div class="card-body">
-      <form role="form"  action="/item/itemInsert" method="POST" class="text-start">
+      <form role="form"  action="/item/Insert" method="POST" class="text-start">
         <div class="input-group input-group-outline my-3">
           <label class="form-label" for="name">Name</label>
           <input type="name" name="itemname" class="form-control">
@@ -143,9 +151,9 @@
           <label class="form-label" for="category">Category</label>
           <input type="text" name="category" class="form-control">
         </div>
-        <div class="input-group input-group-outline my-3">
-          <input type="file" name="image" class="form-control">
-        </div>
+        <!-- <div class="input-group input-group-outline my-3">
+          <input type="file" name="images" class="form-control">
+        </div> -->
         <div class="text-center">
           <button type="submit" value="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
         </div>

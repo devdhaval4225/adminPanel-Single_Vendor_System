@@ -10,9 +10,7 @@ exports.insertCategory = async (req, res, next) => {
         });
         const saveDataCate = await insertData.save();
         console.log("::saveDataCate::", saveDataCate);
-        req.insertCate = saveDataCate;
-        next();
-        res.render("dashboard.ejs");
+        res.redirect("/category");
 
     } catch (error) {
         console.log("::category-insertCategory-ERROR::", error);
@@ -32,14 +30,15 @@ exports.categoryEdit = async (req, res) => {
             },
             {
                 $set:{
+                    name : req.body.name,
                     status : req.body.status
                 }   
             },
             {
                 new : true
             });
-            res.redirect("/category");
             console.log("::editCate::", editCate);
+            res.redirect("/category");
     } catch (error) {
         console.log("::category-categoryEdit-ERROR::", error);
         res.status(500).json({
@@ -70,6 +69,21 @@ exports.deleteCategory = async (req, res) => {
 
         res.redirect("/category");
         console.log("::deleteData::", deleteData);
+    } catch (error) {
+        console.log("::category-deleteCategory-ERROR::", error);
+        res.status(500).json({
+            message: "something went wrong",
+            status: 500
+        })
+    }
+}
+
+exports.showOneCategory = async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const deleteData = await Category.findById({ _id: id })
+        req.cateOne = deleteData
+        next();
     } catch (error) {
         console.log("::category-deleteCategory-ERROR::", error);
         res.status(500).json({

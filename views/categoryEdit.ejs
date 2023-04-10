@@ -89,7 +89,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/template">
+          <a class="nav-link text-white " href="http://localhost:3000/contectus">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <span class="nav-link-text ms-1">Contact us</span>
+          </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="http://localhost:3000/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -130,27 +138,18 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
     <div class="card-body">
-      <form role="form" action="/user<%= editUser.id %>" method="PUT" class="text-start">
-        <%= editUser.name %>
-        <br>
-        <%= editUser.username %>
-        <br>
-        <%= editUser.email %>
-        <br>
-        <%= editUser.mobile %>
-        <br>
-        <%= editUser.image %>
+      <form role="form" action="/category/edit/<%= cateID.id %>" method="POST" class="text-start">
 
         <div class="input-group input-group-outline my-3">
-          <label class="form-label" >Name</label>
-          <input type="name"  name="name" id="name" class="form-control">
+          <label class="form-label" ></label>
+          <input type="name" value="<%= cateID.name %>" name="name" id="name" class="form-control">
         </div>
         <div class="input-group input-group-outline my-3">
-          <label class="form-label">Status</label>
-          <input type="text" <%= editUser.status %> name="status" id="status" class="form-control">
+          <label class="form-label"></label>
+          <input type="text" value="<%= cateID.status %>" name="status" id="status" class="form-control">
         </div>
         <div class="text-center">
-          <button type="submit" value="submit"  class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+          <button type="submit" value="submit"  class="btn bg-gradient-primary w-100 my-4 mb-2">Update</button>
         </div>
       </form>
     </div>

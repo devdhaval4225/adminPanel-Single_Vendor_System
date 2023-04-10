@@ -30,12 +30,7 @@ exports.login = async (req, res) => {
                     {
                         new: true
                     })
-                    res.render("dashboard.ejs");
-                // res.status(200).json({
-                //     message: "login successfully",
-                //     status: 200,
-                //     data: token
-                // })
+                    res.redirect("/");
             } else {
                 res.status(401).json({
                     message: "password not match",

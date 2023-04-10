@@ -1,4 +1,4 @@
-<!--
+<!-- 
 =========================================================
 * Material Dashboard 2 - v3.0.5
 =========================================================
@@ -89,7 +89,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/template">
+          <a class="nav-link text-white " href="http://localhost:3000/contectus">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <span class="nav-link-text ms-1">Contact us</span>
+          </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="http://localhost:3000/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -135,7 +143,7 @@
           <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Authors table </h6>
+                <h6 class="text-white text-capitalize ps-3">Users table </h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -154,25 +162,25 @@
                   <tbody>
 
                      
-                    <% for(var i=0; i < data.length; i++) { %>
+                    <% for(var i=0; i < allUser.length; i++) { %>
                     <tr>
                       <td>
                         <div class="d-flex px-1 py-1">
                           <div>
-                            <img src="/uploads/<%= data[i].image %>" class="avatar avatar-sm me-3 border-radius-lg" style="margin-left: 10px;" alt="user1">
+                            <img src="/uploads/<%= allUser[i].image %>"  width="80"  class="img-thumbnail me-3 border-radius-lg" style="margin-left: 10px;" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <td>
-                              <h6 class="text-xs text-secondary mb-0"><%= data[i].username %></h6>
+                              <h6 class="text-xs text-secondary mb-0"><%= allUser[i].username %></h6>
                             </td>
                           </div>
                         </div>
                       </td>
                  
                       <td class="align-middle">
-                        <a href="http://localhost:3000/user/<%= data[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-edit fa-lg mx-1"></i>Edit</a>
-                        <a href="http://localhost:3000/tables/<%= data[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">| delete </i>Delete </a>
-                        <a href="http://localhost:3000/profile/<%= data[i].id %>"  class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> &nbsp; | <i class="fa-sharp fa-solid fa-eye"></i> View</a>
+                        <a href="http://localhost:3000/profile-view/<%= allUser[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-edit fa-lg mx-1"></i>Edit</a>
+                        <a href="http://localhost:3000/tables/<%= allUser[i].id %>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="material-icons text-sm me-2">| delete </i>Delete </a>
+                        <a href="http://localhost:3000/profile/<%= allUser[i].id %>"  class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"> &nbsp; | <i class="fa-sharp fa-solid fa-eye"></i> View</a>
                       </td>
                     </tr>
                     

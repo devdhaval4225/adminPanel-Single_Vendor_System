@@ -1,4 +1,4 @@
-<!--
+<!-- 
 =========================================================
 * Material Dashboard 2 - v3.0.5
 =========================================================
@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
-  <title>Item Edit</title>
+  <title>User</title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -36,24 +36,26 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-
-
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+    id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="#">
+      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
+        target="_blank">
         <img src="/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold text-white">Material Dashboard 2</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
-
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -65,7 +67,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/tables">
+          <a class="nav-link text-white active bg-gradient-primary" href="#">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -95,7 +97,7 @@
             </div>
             <span class="nav-link-text ms-1">Contact us</span>
           </a>
-      </li>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-white " href="http://localhost:3000/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -112,14 +114,14 @@
             <span class="nav-link-text ms-1">Item Insert</span>
           </a>
         </li>
-      <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link text-white " href="http://localhost:3000/categoryInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1">Category Insert</span>
           </a>
-      </li>
+        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
@@ -134,33 +136,65 @@
       </ul>
     </div>
   </aside>
-
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
-    <div class="card-body">
-        <form role="form" action="/item/item-update/<%= itemID.id %>" method="POST" class="text-start">
-            <div class="input-group input-group-outline my-3">
-              <label class="form-label"></label>
-              <input type="name" name="itemname" value="<%= itemID.itemname %>" class="form-control">
+    <div class="container-fluid py-4">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Contect Us table </h6>
+              </div>
             </div>
-            <div class="input-group input-group-outline mb-3">
-              <label class="form-label"></label>
-              <input type="text" name="price" value="<%= itemID.price %>" class="form-control">
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mobile</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <% for( let i=0; i < contectAllData.length; i++ ) { %>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm"><%= contectAllData[i].name %></h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0"><%= contectAllData[i].email %></p>
+                        </td>
+                        <td class="align-middle text-center">
+                          <span class="text-secondary text-xs font-weight-bold"><%= contectAllData[i].mobile %></span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success"><%= contectAllData[i].status %></span>
+                        </td>
+                        <td class="align-middle">
+                          <a href="http://localhost:3000/contectusEdit/<%= contectAllData[i].id %>" class="text-secondary font-weight-bold text-xs"data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-edit fa-lg mx-1"></i>Edit</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <% } %>
+
+                </table>
+              </div>
             </div>
-            <div class="input-group input-group-outline my-3">
-              <label class="form-label"></label>
-              <input type="text" name="category" value="<%= itemID.category %>" class="form-control">
-            </div>
-            <div class="input-group input-group-outline my-3">
-              <input type="file" name="image" value="<%= itemID.image %>" class="form-control">
-            </div>
-            <div class="text-center">
-              <button type="submit" value="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
-            </div>
-          </form>
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
-
 
   <!--   Core JS Files   -->
   <script src="/js/core/popper.min.js"></script>

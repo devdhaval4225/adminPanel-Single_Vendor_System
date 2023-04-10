@@ -7,24 +7,19 @@ exports.insert = async (req, res) => {
     try {
         const { email, username, name, mobile } = req.body;
         const checkEmail = await User.findOne({ email: email });
-        if (checkEmail == null) {
-            const image = req.file.filename
-            console.log("::image::", image);
+
+            // const image = req.file.filename
+            console.log("::req.body::", req.body);
             const insertUser = new User({
-                image: image,
+                // image: image,
                 name: name,
                 username: username,
                 email: email,
                 mobile: mobile
             });
             const saveData = await insertUser.save();
-            res.render("dashboard.ejs")
-        } else {
-            res.status(404).json({
-                message: "Email already exitst.",
-                status: 404
-            })
-        }
+            console.log("::saveData::", saveData);
+            res.redirect("tables");
 
     } catch (error) {
         console.log("::user-insert-ERROR::", error);
@@ -39,27 +34,35 @@ exports.edit = async (req, res, next) => {
     try {
         const id = req.params.id
         const { name, username, email, mobile } = req.body;
-            // const images = req.file.filename
-            const updateData = await User.findByIdAndUpdate(
-                {
-                    _id: id
-                },
-                {
-                    $set: {
-                        // image: images,
-                        name: name,
-                        username: username,
-                        email: email,
-                        mobile: mobile
-                    }
-                },
-                {
-                    new: true
-                });
-            req.edit = updateData
-            console.log("::req.edit::", req.edit);
-            next();
-            console.log("::updateData::", updateData);
+        console.log("req.body", req.body);
+        console.log("::req.file::", req.file);
+        console.log("::req.file::", req.file.filename);
+
+        const images = req.file.filename
+        console.log("::images::", images);
+        const updateData = await User.findByIdAndUpdate(
+            {
+                _id: id
+            },
+            {
+                $set: {
+                    image: images,
+                    name: name,
+                    username: username,
+                    email: email,
+                    mobile: mobile
+                }
+            },
+            {
+                new: true
+            });
+        res.redirect("/tables")
+        console.log("::updateData::", updateData);
+        // res.status(200).json({
+        //     message : "update",
+        //     status : 200,
+        //     data : updateData
+        // })
 
     } catch (error) {
         console.log("::user-edit-ERROR::", error);

@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
         let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
         let fileName = "";
         for (let i = 1; i <= 6; i++) {
-            const nCode = Math.floor(Math.random() * 36);
+            const nCode = Math.floor(Math.random() * chars.length);
             fileName += chars[nCode];
         }
 
@@ -22,6 +22,7 @@ const storage = multer.diskStorage({
 var upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
+        console.log("::UPLOAD-MULTER_FILE::", file);
         if (file.mimetype == "image/jpeg" || file.mimetype == "image/jpg" || file.mimetype == "image/png" || file.mimetype == "image/apng" || file.mimetype == "image/avif" || file.mimetype == "image/gif" || file.mimetype == "image/svg+xml" || file.mimetype == "image/webp" || file.mimetype == "application/octet-stream") {
             cb(null, true);
         } else {
@@ -30,5 +31,8 @@ var upload = multer({
         }
     }
 });
+
+
+
 
 module.exports = upload;

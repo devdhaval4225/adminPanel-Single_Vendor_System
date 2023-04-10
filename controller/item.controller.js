@@ -12,22 +12,16 @@ exports.Iteminsert = async (req, res, next) => {
                 status: 404
             })
         } else {
-            const images = req.file.filename;
-            console.log("::images::", images);
+            // const images = req.file.filename;
+            // console.log("::images::", images);
             const insertData = new Item({
-                image: images,
+                // image: images,
                 itemname: itemname,
                 price: price,
                 category: category
             });
             const saveData = await insertData.save();
-            // res.status(201).json({
-            //     message : "item inserted",
-            //     status : 201,
-            //     data : saveData
-            // })
             res.redirect("/item")
-            // req.newItem = saveData
         }
 
     } catch (error) {
@@ -50,15 +44,15 @@ exports.updateItem = async (req, res, next) => {
                 status: 404
             })
         } else {
-            const images = req.file.filename
-            console.log("::iamge::", images);
+            // const images = req.file.filename
+            // console.log("::iamge::", images);
             const updateData = await Item.findByIdAndUpdate(
                 {
                     _id: id
                 },
                 {
                     $set: {
-                        image: images,
+                        // image: images,
                         itemname: itemname,
                         price: price,
                         category: category
@@ -68,14 +62,7 @@ exports.updateItem = async (req, res, next) => {
                     new: true
                 }
             );
-            // req.updateitem = updateData
-            // next();
-            // res.redirect("/item");
-            res.status(200).json({
-                message: "update item",
-                status: 200,
-                data: updateData
-            });
+            res.redirect("/item");
         }
     } catch (error) {
         console.log("::item-updateData-ERROR::", error);

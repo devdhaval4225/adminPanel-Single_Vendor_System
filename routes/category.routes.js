@@ -4,13 +4,15 @@ const {
     insertCategory,
     showCategory,
     categoryEdit,
-    deleteCategory
+    deleteCategory,
+    showOneCategory
 } = require("../controller/category.controller");
 
 router.post("/category", insertCategory);
-router.put("/edit/:id", categoryEdit);
+router.post("/edit/:id", categoryEdit);
 router.get("/show", showCategory);
-router.get("/delete/:id", deleteCategory);
+router.delete("/delete/:id", deleteCategory);
+router.get("cate-view/:id", showOneCategory);
 
 
 

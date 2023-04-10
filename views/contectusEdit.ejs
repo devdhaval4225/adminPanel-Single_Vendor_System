@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
-  <title>Item Edit</title>
+  <title>Category Edit</title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css"
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -138,26 +138,19 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
     <div class="card-body">
-        <form role="form" action="/item/item-update/<%= itemID.id %>" method="POST" class="text-start">
-            <div class="input-group input-group-outline my-3">
-              <label class="form-label"></label>
-              <input type="name" name="itemname" value="<%= itemID.itemname %>" class="form-control">
-            </div>
-            <div class="input-group input-group-outline mb-3">
-              <label class="form-label"></label>
-              <input type="text" name="price" value="<%= itemID.price %>" class="form-control">
-            </div>
-            <div class="input-group input-group-outline my-3">
-              <label class="form-label"></label>
-              <input type="text" name="category" value="<%= itemID.category %>" class="form-control">
-            </div>
-            <div class="input-group input-group-outline my-3">
-              <input type="file" name="image" value="<%= itemID.image %>" class="form-control">
-            </div>
-            <div class="text-center">
-              <button type="submit" value="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
-            </div>
-          </form>
+      <form role="form" action="/contect/contect/<%= CONTID.id %>" method="POST" class="text-start">
+
+        <label class="form-label">Name :-  &nbsp;<%= CONTID.name %></label><br>
+        <label class="form-label">Email :- &nbsp;<%= CONTID.email %></label><br>
+        <label class="form-label">Mobile :- <%= CONTID.mobile %></label><br>
+        <div class="input-group input-group-outline my-3">
+          <label class="form-label"></label>
+          <input type="text" value="<%= CONTID.status %>" name="status" id="status" class="form-control">
+        </div>
+        <div class="text-center">
+          <button type="submit" value="submit"  class="btn bg-gradient-primary w-100 my-4 mb-2">Update</button>
+        </div>
+      </form>
     </div>
   </main>
 

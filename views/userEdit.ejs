@@ -36,14 +36,18 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
 
 
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+    id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
@@ -89,7 +93,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/template">
+          <a class="nav-link text-white " href="http://localhost:3000/contectus">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <span class="nav-link-text ms-1">Contact us</span>
+          </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="http://localhost:3000/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -104,14 +116,14 @@
             <span class="nav-link-text ms-1">Item Insert</span>
           </a>
         </li>
-      <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link text-white " href="http://localhost:3000/categoryInsert">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
             <span class="nav-link-text ms-1">Category Insert</span>
           </a>
-      </li>
+        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
@@ -129,35 +141,35 @@
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <div class="card-body">
-      <form role="form" action="/user/<%= updateData.id %>" method="PUT" class="text-start">
+      <form role="form" method="POST" action="/user/<%= one.id %>" class="text-start">
+        <% console.log('test', one) %>
 
-        <div class="input-group input-group-outline my-3">
-          <label class="form-label" for="name" ></label>
-          <input type="name" name="name" value="<%= updateData.name %>" id="name" class="form-control">
-        </div>
-        <div class="input-group input-group-outline my-3">
-          <label class="form-label" for="username"></label>
-          <input type="text" name="username" value="<%= updateData.username %>" id="username" class="form-control">
-        </div>
-        <div class="input-group input-group-outline my-3">
-          <label class="form-label" for="email"></label>
-          <input type="email" name="email" value="<%= updateData.email %>" id="email" class="form-control">
-        </div>
-        <div class="input-group input-group-outline mb-3">
-          <label class="form-label" for="mobile"></label>
-          <input type="mobile" name="mobile" value="<%= updateData.mobile %>" id="mobile" class="form-control">
-        </div>
-        <%= updateData.image %>
-        <div class="input-group input-group-outline my-3">
-          <input type="file" value="<%= updateData.image %>" name="image" id="image" class="form-control">
-        </div>
+          <div class="input-group input-group-outline my-3">
+            <label class="form-label" for="name"></label>
+            <input type="name" name="name" value="<%= one.name %>" id="name" class="form-control">
+          </div>
+          <div class="input-group input-group-outline my-3">
+            <label class="form-label" for="username"></label>
+            <input type="text" name="username" value="<%= one.username %>" id="username" class="form-control">
+          </div>
+          <div class="input-group input-group-outline my-3">
+            <label class="form-label" for="email"></label>
+            <input type="email" name="email" value="<%= one.email %>" id="email" class="form-control">
+          </div>
+          <div class="input-group input-group-outline mb-3">
+            <label class="form-label" for="mobile"></label>
+            <input type="mobile" name="mobile" value="<%= one.mobile %>" id="mobile" class="form-control">
+          </div>
+          <div class="input-group input-group-outline my-3">
+            <input type="file" value="<%= one.image %>" name="image" id="image" class="form-control">
+          </div>
           <div class="text-center">
-            <button type="submit" value="Submit"  class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+            <button type="submit" value="Submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Update</button>
           </div>
       </form>
-    </div>       
+    </div>
   </main>
-
+  `
 
   <!--   Core JS Files   -->
   <script src="/js/core/popper.min.js"></script>

@@ -90,7 +90,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/template">
+          <a class="nav-link text-white " href="http://localhost:3000/contectus">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <span class="nav-link-text ms-1">Contact us</span>
+          </a>
+      </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " href="http://localhost:3000/user">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -133,48 +141,29 @@
       <form role="form" action="/insert" method="POST" class="text-start">
         <div class="input-group input-group-outline my-3">
           <label class="form-label" >Name</label>
-          <input type="name" name="name" class="form-control">
+          <input type="name" name="name"  class="form-control">
         </div>
         <div class="input-group input-group-outline mb-3">
           <label class="form-label">Username</label>
-          <input type="username" name="username" class="form-control">
+          <input type="username" name="username"  class="form-control">
         </div>
         <div class="input-group input-group-outline my-3">
           <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-control">
+          <input type="email" name="email"  class="form-control">
         </div>
         <div class="input-group input-group-outline mb-3">
           <label class="form-label">Mobile Number</label>
-          <input type="mobile" name="mobile" class="form-control">
+          <input type="mobile" name="mobile"  class="form-control">
         </div>
-        <div class="input-group input-group-outline my-3">
-          <input type="file" name="image" class="form-control">
-        </div>
+        <!-- <div class="input-group input-group-outline my-3">
+          <input type="file" name="image"  class="form-control">
+        </div> -->
         <div class="text-center">
           <button type="submit" value="submit"  class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
         </div>
       </form>
     </div>
 
-    <div class="container-fluid py-4">
-      <footer class="footer py-4  ">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
-                ©
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
   </main>
   <!--   Core JS Files   -->
   <script src="/js/core/popper.min.js"></script>
