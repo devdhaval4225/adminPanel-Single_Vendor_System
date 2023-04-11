@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
+const itemId = Math.floor(Math.random() * 1000000).toString();
 
 const itemSchema = new mongoose.Schema({
+    itemId : {
+        type : String,
+        default : itemId
+    },
     image: {
         type : String
     },
@@ -22,4 +27,4 @@ const itemSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("item", itemSchema);
+module.exports = mongoose.model("item", itemSchema);    

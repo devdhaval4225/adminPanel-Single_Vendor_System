@@ -66,11 +66,11 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/tables">
+          <a class="nav-link text-white active bg-gradient-primary" href="#">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">table_view</i>
+                <i class="fa-solid fa-user"></i>
             </div>
-            <span class="nav-link-text ms-1">Tables</span>
+            <span class="nav-link-text ms-1">User</span>
           </a>
         </li>
         <li class="nav-item">
@@ -78,7 +78,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
-            <span class="nav-link-text ms-1">ITEMS</span>
+            <span class="nav-link-text ms-1">Product</span>
           </a>
         </li>
         <li class="nav-item">
@@ -90,37 +90,21 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/contectus">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fa-solid fa-phone"></i>
-            </div>
-            <span class="nav-link-text ms-1">Contact us</span>
-          </a>
-      </li>
+            <a class="nav-link text-white " href="http://localhost:3000/testimonial">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-message"></i>
+              </div>
+              <span class="nav-link-text ms-1">Testimonial</span>
+            </a>
+        </li>        
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/user">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">User Insert</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/itemInsert">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Item Insert</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/categoryInsert">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">assignment</i>
-            </div>
-            <span class="nav-link-text ms-1">Category Insert</span>
-          </a>
-        </li>
+            <a class="nav-link text-white " href="http://localhost:3000/contectus">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <span class="nav-link-text ms-1">Contact us</span>
+            </a>
+          </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
@@ -136,10 +120,9 @@
     </div>
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-
-
     <div class="container-fluid py-4">
-
+      <h3 class="text-uppercase d-flex justify-content-end text-secondary text-xxs font-weight-bolder" style="margin-right:15px; " ><a href="http://localhost:3000/itemInsert"><button style="font-size: medium; border-radius: 5px; background-color:#EC407A; color: white;">Add Product</button></a></h3>
+      <br>
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
@@ -159,8 +142,6 @@
                     </tr>
                   </thead>
                   <tbody>
-
-
                     <% for(var i=0; i < item.length; i++) { %>
                       <tr>
                         <td>

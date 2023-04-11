@@ -12,10 +12,10 @@ router.get('/profile/:id', showOne);
 
 
 
-const { itemShow, itemById,  deleteItem } = require("../controller/item.controller");
+const { itemShow, itemById, deleteItem } = require("../controller/item.controller");
 const { showOneCategory, showCategory, deleteCategory } = require("../controller/category.controller");
-const { allContect, showContect } = require("../controller/contectus.controller")
-
+const { allContect, showContect } = require("../controller/contectus.controller");
+const { testID, allTest, testDelete } = require("../controller/testimonial.controller");
 
 //? HOME ROUTE
 router.get('/', verifyUser, totalCount, async (req, res) => {
@@ -24,7 +24,7 @@ router.get('/', verifyUser, totalCount, async (req, res) => {
 });
 
 //? LOG IN
-router.get('/sign-in', function (req, res, next) {
+router.get('/sign-in', async (req, res) => {
   res.render('sign-in.ejs', { title: 'Express' });
 });
 
@@ -33,24 +33,33 @@ router.get('/sign-in', function (req, res, next) {
 
 
 
-//*  ============================================= INSERT =================================================================================
+
+//  ============================================= INSERT =================================================================================
 
 //? USER
-router.get('/user', verifyUser,  async (req, res) => {
+router.get('/user', verifyUser, async (req, res) => {
   res.render('user.ejs');
 });
 
 //? ITEM
-router.get('/itemInsert', verifyUser,  async (req, res) => {
+router.get('/itemInsert', verifyUser, async (req, res) => {
   res.render('itemInsert.ejs');
 });
 
 //? CATEGORY
-router.get('/categoryInsert', verifyUser,  async (req, res) => {
+router.get('/categoryInsert', verifyUser, async (req, res) => {
   res.render('categoryInsert.ejs');
 });
 
-//*  ======================================================================================================================================
+//? TESTIMONIAL
+router.get('/testimonialInsert', verifyUser, async (req, res) => {
+  res.render("testimonialInsert.ejs")
+})
+
+//  ======================================================================================================================================
+
+
+
 
 //* ======================================== All Data Show ======================================== 
 //? USER
@@ -72,11 +81,19 @@ router.get('/category', verifyUser, showCategory, async (req, res) => {
 });
 
 //? CONTECT_US
-router.get('/contectus',verifyUser, allContect, async (req, res) => {
+router.get('/contectus', verifyUser, allContect, async (req, res) => {
   contectAllData = req.all
   res.render('contectus.ejs', { contectAllData });
 });
+
+//? TESTIMONIAL
+router.get('/testimonial', verifyUser, allTest, async (req, res) => {
+  test = req.sTestimonial
+  res.render('testimonial.ejs', { test });
+});
 //* ==================================================================================== 
+
+
 
 
 
@@ -94,17 +111,26 @@ router.get('/item-view/:id', verifyUser, itemById, async (req, res) => {
 });
 
 //? CATEGORY
-router.get('/cate-view/:id', verifyUser, showOneCategory,  async (req, res) => {
+router.get('/cate-view/:id', verifyUser, showOneCategory, async (req, res) => {
   cateID = req.cateOne
   res.render('categoryEdit.ejs', { cateID });
 });
 
 //? CONTECT_US
-router.get('/cont-view/:id', verifyUser, showContect,  async (req, res) => {
+router.get('/cont-view/:id', verifyUser, showContect, async (req, res) => {
   CONTID = req.showC
   res.render('contectusEdit.ejs', { CONTID });
 });
+
+//! TESTIMONIAL
+router.get('/testEdit/:id', verifyUser, testID, async (req, res) => {
+  showIDTest = req.testId 
+  res.render('testimonialEdit.ejs', { showIDTest });
+});
+
 //*  ======================================================================================================================================
+
+
 
 
 
@@ -148,6 +174,11 @@ router.get('/item/:id', verifyUser, deleteItem, async (req, res) => {
 router.get('/category/:id', verifyUser, deleteCategory, async (req, res) => {
   res.render("category")
 });
+
+//! TESTIMONIAL
+router.get("/testDelete/:id", verifyUser, testDelete, async (req, res) => {
+  res.render("testimonial")
+})
 //* ============================================================================================ 
 
 

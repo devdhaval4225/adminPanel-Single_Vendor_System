@@ -10,6 +10,7 @@ var adminRouter = require('./routes/admin.routes');
 var itemRouter = require('./routes/item.routes');
 var categoryRouter = require('./routes/category.routes');
 var contectusRouter = require('./routes/contectus.routes');
+var testimonialRouter = require('./routes/testimonial.routes');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/admin', adminRouter);
 app.use('/item', itemRouter);
 app.use('/category', categoryRouter);
 app.use('/contect', contectusRouter);
+app.use('/testimonial', testimonialRouter);
 
 
 // catch 404 and forward to error handler

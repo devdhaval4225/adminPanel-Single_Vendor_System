@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
+    catId : {
+        type : String
+    },
     name: {
         type: String
     },
     status : {
-        type : String
+        type : Number
     }
 }, {
     timestamps: true

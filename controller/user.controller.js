@@ -1,6 +1,7 @@
 const User = require("../model/user.model");
 const Item = require("../model/item.model");
 const Cate = require("../model/category.model");
+const Contect = require("../model/contectus.model");
 
 
 exports.insert = async (req, res) => {
@@ -8,18 +9,20 @@ exports.insert = async (req, res) => {
         const { email, username, name, mobile } = req.body;
         const checkEmail = await User.findOne({ email: email });
 
-            // const image = req.file.filename
-            console.log("::req.body::", req.body);
-            const insertUser = new User({
-                // image: image,
-                name: name,
-                username: username,
-                email: email,
-                mobile: mobile
-            });
-            const saveData = await insertUser.save();
-            console.log("::saveData::", saveData);
-            res.redirect("tables");
+        // const image = req.file.filename
+        console.log("::req.body::", req.body);
+        const userId = Math.floor(Math.random() * 1000000).toString();
+        const insertUser = new User({
+            userId : userId,
+            // image: image,
+            name: name,
+            username: username,
+            email: email,
+            mobile: mobile
+        });
+        const saveData = await insertUser.save();
+        console.log("::saveData::", saveData);
+        res.redirect("tables");
 
     } catch (error) {
         console.log("::user-insert-ERROR::", error);
@@ -108,8 +111,9 @@ exports.totalCount = async (req, res, next) => {
         const countUser = await User.find().count();
         const countItem = await Item.find().count();
         const countCate = await Cate.find().count();
+        const countCont = await Contect.find().count();
 
-        const total = { countUser, countItem, countCate }
+        const total = { countUser, countItem, countCate, countCont }
         req.total = total;
         next();
     } catch (error) {

@@ -5,7 +5,7 @@ const Category = require("../model/category.model");
 exports.Iteminsert = async (req, res, next) => {
     try {
         const { itemname, price, category } = req.body
-        const findCate = await Category.findOne({ name: category });
+        const findCate = await Category.findOne({ name: category }).select({ name: 1, status: 1 });
         if (findCate == null) {
             res.status(404).json({
                 message: "category not found",
@@ -14,14 +14,24 @@ exports.Iteminsert = async (req, res, next) => {
         } else {
             // const images = req.file.filename;
             // console.log("::images::", images);
-            const insertData = new Item({
-                // image: images,
-                itemname: itemname,
-                price: price,
-                category: category
-            });
-            const saveData = await insertData.save();
-            res.redirect("/item")
+            const checkStatus = findCate.status
+            if (checkStatus == 1) {
+                const insertData = new Item({
+                    itemId: itemId,
+                    // image: images,
+                    itemname: itemname,
+                    price: price,
+                    category: category
+                });
+                const saveData = await insertData.save();
+                res.redirect("/item")
+            } else {
+                res.status(404).json({
+                    message : "catagory tempory not active",
+                    status : 404
+                })
+            }
+
         }
 
     } catch (error) {
@@ -90,9 +100,19 @@ exports.deleteItem = async (req, res, next) => {
 
 exports.itemShow = async (req, res, next) => {
     try {
-        const findData = await Item.find();
-        req.item = findData
-        next();
+        const findData = await Item.find({}).select({ status : 1 });
+        const statusFind = findData.status
+        if (statusFind == 1) {
+            req.item = statusFind
+            console.log("::req.item::",req.item);
+            res.status(200).json({
+                data : statusFind
+            })
+            // next();
+        } else {
+            
+        }
+
 
     } catch (error) {
         console.log("::item-itemShow-ERROR::", error);

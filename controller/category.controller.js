@@ -4,7 +4,9 @@ const Category = require("../model/category.model");
 exports.insertCategory = async (req, res, next) => {
     try {
         const { name, status } = req.body
+        const catId = Math.floor(Math.random() * 1000000).toString();
         const insertData = new Category({
+            catId: catId,
             name: name,
             status: status
         });
@@ -26,19 +28,19 @@ exports.categoryEdit = async (req, res) => {
         const id = req.params.id;
         const editCate = await Category.findByIdAndUpdate(
             {
-                _id : id
+                _id: id
             },
             {
-                $set:{
-                    name : req.body.name,
-                    status : req.body.status
-                }   
+                $set: {
+                    name: req.body.name,
+                    status: req.body.status
+                }
             },
             {
-                new : true
+                new: true
             });
-            console.log("::editCate::", editCate);
-            res.redirect("/category");
+        console.log("::editCate::", editCate);
+        res.redirect("/category");
     } catch (error) {
         console.log("::category-categoryEdit-ERROR::", error);
         res.status(500).json({
