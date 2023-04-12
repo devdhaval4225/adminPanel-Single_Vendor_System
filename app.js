@@ -4,6 +4,20 @@ require("./database/connection");
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const flash = require('connect-flash');
+const session = require('express-session');
+var app = express();
+
+
+app.use(session({
+    secret: 'SecretStringForCookies',
+    cookie: {
+        maxAge: 60000
+    }, //60seconds
+    resave: true,
+    saveUninitialized: true,
+}));
+app.use(flash());
 
 var userRouter = require('./routes/user.routes');
 var adminRouter = require('./routes/admin.routes');
@@ -12,7 +26,6 @@ var categoryRouter = require('./routes/category.routes');
 var contectusRouter = require('./routes/contectus.routes');
 var testimonialRouter = require('./routes/testimonial.routes');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

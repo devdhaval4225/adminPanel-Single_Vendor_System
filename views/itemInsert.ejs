@@ -36,14 +36,18 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
 
 
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+    id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
@@ -68,7 +72,7 @@
         <li class="nav-item">
           <a class="nav-link text-white active bg-gradient-primary" href="http://localhost:3000/tables">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user"></i>
             </div>
             <span class="nav-link-text ms-1">User</span>
           </a>
@@ -90,21 +94,21 @@
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white " href="http://localhost:3000/testimonial">
-              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-message"></i>
-              </div>
-              <span class="nav-link-text ms-1">Testimonial</span>
-            </a>
-        </li>        
+          <a class="nav-link text-white " href="http://localhost:3000/testimonial">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-message"></i>
+            </div>
+            <span class="nav-link-text ms-1">Testimonial</span>
+          </a>
+        </li>
         <li class="nav-item">
-            <a class="nav-link text-white " href="http://localhost:3000/contectus">
-              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <span class="nav-link-text ms-1">Contact us</span>
-            </a>
-          </li>
+          <a class="nav-link text-white " href="http://localhost:3000/contectus">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <span class="nav-link-text ms-1">Contact us</span>
+          </a>
+        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
@@ -122,23 +126,31 @@
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
     <div class="card-body">
-      <form role="form"  action="/item/Insert" method="POST" class="text-start">
+      <form role="form" action="/item/Insert" method="POST" class="text-start">
         <div class="input-group input-group-outline my-3">
-          <label class="form-label" for="name">Name</label>
-          <input type="name" name="itemname" class="form-control">
+          <!-- <label class="form-label" for="name">Name</label> -->
+          <input type="name" name="name" class="form-control" placeholder="Name">
         </div>
         <div class="input-group input-group-outline mb-3">
-          <label class="form-label" for="price">Price</label>
-          <input type="text" name="price" class="form-control">
+          <!-- <label class="form-label" for="price">Description</label> -->
+          <input type="text" name="description" class="form-control" placeholder="Description">
+        </div>
+        <div class="input-group input-group-outline mb-3">
+          <!-- <label class="form-label" for="price">Price</label> -->
+          <input type="text" name="price" class="form-control" placeholder="Price">
         </div>
         <div class="input-group input-group-outline my-3">
-          <label class="form-label" for="category">Category</label>
-          <input type="text" name="category" class="form-control">
-          <p><%= cate %></p>
-          <p><%= cateM %></p>
+          <!-- <label class="form-label" for="category">Category</label> -->
+          <input type="text" name="category" class="form-control" placeholder="Category">
         </div>
+        <p>
+          <% if (catcat == null) { %>
+            <%= noCategory %>
+              <%= noActiveCategory %>
+          <% } %>
+        </p>
         <!-- <div class="input-group input-group-outline my-3">
-          <input type="file" name="images" class="form-control">
+          <input type="file" name="filename" class="form-control">
         </div> -->
         <div class="text-center">
           <button type="submit" value="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>

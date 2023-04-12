@@ -5,31 +5,32 @@ const Category = require("../model/category.model");
 exports.Iteminsert = async (req, res, next) => {
     try {
         const { name, price, category, description } = req.body
-        const findCate = await Category.findOne({ name: category }).select({ name: 1, status: 1 });
+        const findCate = await Category.findOne({ name: category });
+
         if (findCate == null) {
-                res.catemessage = "category not found",
-                next();
+            req.cateNot = "findCate";
+            next();
         } else {
-            // const images = req.file.filename;
-            // console.log("::images::", images);
-            const checkStatus = findCate.status
-            if (checkStatus == 1) {
+            if (findCate.status == 1) {
                 const itemId = Math.floor(Math.random() * 1000000).toString();
                 const insertData = new Item({
                     itemId: itemId,
-                    // image: images,
+                    image: req.file.filename,
                     name: name,
                     description: description,
                     price: price,
                     category: category
                 });
+                console.log("::insertData::%o");
                 const saveData = await insertData.save();
+                console.log("::%o::", saveData);
                 res.redirect("/item")
             } else {
-                res.Catemessage = "catagory tempory not active"
-                next();
-            }
+                res.send("Catagory Not Active")
 
+                // res.CateStatus = 
+                // next();
+            }
         }
 
     } catch (error) {
@@ -46,33 +47,45 @@ exports.updateItem = async (req, res, next) => {
         const id = req.params.id
         const { name, price, category, description, status } = req.body
         const findCate = await Category.findOne({ name: category });
+        console.log("::findCate::", findCate);
+        console.log("::category::", category);
         if (findCate == null) {
-            res.status(404).json({
-                message: "Category not Found",
-                status: 404
-            })
+            const a = "category not found"
+            req.c1234 = a,
+                console.log("::req.c1234::", req.c1234);
+            next();
+
+            // res.send("Category Not Found");
+
         } else {
-            // const images = req.file.filename
-            // console.log("::iamge::", images);
-            const updateData = await Item.findByIdAndUpdate(
-                {
-                    _id: id
-                },
-                {
-                    $set: {
-                        // image: images,
-                        name: name,
-                        description: description,
-                        price: price,
-                        status : status,
-                        category: category
+            if (findCate.status == 1) {
+                // const images = req.file.filename
+                // console.log("::iamge::", images);
+                const updateData = await Item.findByIdAndUpdate(
+                    {
+                        _id: id
+                    },
+                    {
+                        $set: {
+                            // image: images,
+                            name: name,
+                            description: description,
+                            price: price,
+                            status: status,
+                            category: category
+                        }
+                    },
+                    {
+                        new: true
                     }
-                },
-                {
-                    new: true
-                }
-            );
-            res.redirect("/item");
+                );
+                res.redirect("/item");
+            } else {
+                // res.send("Catagory Not Active");
+                req.CateUPStatus = "Catagory Not Active";
+                console.log("::req.CateUPStatus:::::::::::::::::::", req.CateUPStatus);
+                next();
+            }
         }
     } catch (error) {
         console.log("::item-updateData-ERROR::", error);
@@ -88,14 +101,14 @@ exports.deleteItem = async (req, res, next) => {
         const id = req.params.id
         const deleteData = await Item.findByIdAndUpdate(
             {
-                 _id: id 
-            },{
-                $set: {
-                    status : 2
-                }
-            },{
-                new : true
-            });
+                _id: id
+            }, {
+            $set: {
+                status: 2
+            }
+        }, {
+            new: true
+        });
         res.redirect("/item");
     } catch (error) {
         console.log("::item-deleteItem-ERROR::", error);
@@ -112,14 +125,11 @@ exports.itemShow = async (req, res, next) => {
         const totalItem = [];
         for (const statusItem of showAllItem) {
             if (statusItem.status == 1) {
-                console.log("::statusItem::", statusItem);
                 totalItem.push(statusItem);
             }
         }
         req.item = totalItem
         next();
-
-
     } catch (error) {
         console.log("::item-itemShow-ERROR::", error);
         res.status(500).json({
@@ -133,7 +143,6 @@ exports.itemById = async (req, res, next) => {
     try {
         const id = req.params.id
         const countData = await Item.findById({ _id: id });
-        console.log("::countData::", countData);
         req.itembyid = countData
         next();
 

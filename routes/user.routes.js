@@ -2,7 +2,9 @@ var router = require('express').Router();
 const { verifyUser } = require("../middleware/user.auth");
 const { insert, edit, show, userDelete, totalCount, showOne } = require("../controller/user.controller");
 const upload = require("../utils/upload.image");
+const flash = require('connect-flash');
 
+router.use(flash());
 router.post('/insert', upload.single("image"), insert);
 router.post('/user/:id', upload.single("image"), edit)
 router.get('/show', show);
@@ -12,26 +14,21 @@ router.get('/profile/:id', showOne);
 
 
 
-const { itemShow, itemById, deleteItem } = require("../controller/item.controller");
+const { Iteminsert, updateItem, itemShow, itemById, deleteItem } = require("../controller/item.controller");
 const { showOneCategory, showCategory, deleteCategory } = require("../controller/category.controller");
 const { allContect, showContect } = require("../controller/contectus.controller");
 const { testID, allTest, testDelete } = require("../controller/testimonial.controller");
 
 //? HOME ROUTE
-router.get('/', verifyUser, totalCount,  async (req, res) => {
+router.get('/', verifyUser, totalCount, async (req, res) => {
   total = req.total
-  res.render('dashboard.ejs', {  total });
+  res.render('dashboard.ejs', { total });
 });
 
 //? LOG IN
 router.get('/sign-in', async (req, res) => {
   res.render('sign-in.ejs', { title: 'Express' });
 });
-
-
-
-
-
 
 
 //  ============================================= INSERT =================================================================================
@@ -42,10 +39,17 @@ router.get('/user', verifyUser, async (req, res) => {
 });
 
 //? ITEM
-router.get('/itemInsert', verifyUser, async (req, res) => {
-  cate = res.catemessage
-  cateM = res.Catemessage 
-  res.render('itemInsert.ejs', { cate, cateM });
+router.get('/itemInsert', verifyUser, async (req, res, next) => {
+  // if (req.cateNot == false) {
+
+  // } else {
+  const catcat = req.cateNot;
+  const noCategory = "category Not found";
+  const noActiveCategory = "category Not Active";
+  console.log("987",catcat);
+  res.render('itemInsert.ejs', { noCategory, noActiveCategory, catcat });
+  next();
+  // }
 });
 
 //? CATEGORY
@@ -70,10 +74,11 @@ router.get('/tables', verifyUser, show, async (req, res) => {
   res.render("tables", { allUser })
 });
 
-//? ITEM
+//! ITEM
 router.get('/item', verifyUser, itemShow, async (req, res) => {
   item = req.item
-  res.render('item.ejs', { item });
+  cate = req.cateNot
+  res.render('item.ejs', { item, cate });
 });
 
 //? CATEGORY
@@ -106,10 +111,19 @@ router.get('/profile-view/:id', verifyUser, showOne, function (req, res, next) {
   res.render("userEdit.ejs", { one });
 });
 
-//? ITEM
-router.get('/item-view/:id', verifyUser, itemById, async (req, res) => {
-  itemID = req.itembyid
-  res.render('itemEdit.ejs', { itemID });
+//! ITEM
+router.get('/item-view/:id', verifyUser, itemById, updateItem, async (req, res) => {
+
+
+  const itemID = req.itembyid;
+
+  const cateUP = req.c1234;
+  console.log("::cateUP::", cateUP);
+  const cateMUP = req.CateUPStatus;
+  console.log("::cateMUP::", cateMUP);
+
+
+  res.render('itemEdit.ejs', { cateUP, cateMUP, itemID });
 });
 
 //? CATEGORY
@@ -126,7 +140,7 @@ router.get('/cont-view/:id', verifyUser, showContect, async (req, res) => {
 
 //! TESTIMONIAL
 router.get('/testEdit/:id', verifyUser, testID, async (req, res) => {
-  showIDTest = req.testId 
+  showIDTest = req.testId
   res.render('testimonialEdit.ejs', { showIDTest });
 });
 

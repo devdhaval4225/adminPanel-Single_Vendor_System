@@ -125,7 +125,7 @@
         <form role="form" action="/item/item-update/<%= itemID.id %>" method="POST" class="text-start">
             <div class="input-group input-group-outline my-3">
               <label class="form-label"></label>
-              <input type="name" name="itemname" value="<%= itemID.name %>" class="form-control">
+              <input type="name" name="name" value="<%= itemID.name %>" class="form-control">
             </div>
             <div class="input-group input-group-outline mb-3">
               <label class="form-label"></label>
@@ -138,6 +138,10 @@
             <div class="input-group input-group-outline my-3">
               <label class="form-label"></label>
               <input type="text" name="category" value="<%= itemID.category %>" class="form-control">
+            </div>
+            <div style="color: red;">
+              <p><%= cateUP %></p>
+              <p><%= cateMUP %></p>
             </div>
             <div class="input-group input-group-outline my-3">
               <label class="form-label"></label>

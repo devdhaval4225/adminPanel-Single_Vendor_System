@@ -1,26 +1,26 @@
 const mongoose = require("mongoose");
 const itemSchema = new mongoose.Schema({
-    itemId : {
-        type : String
+    itemId: {
+        type: String
     },
     image: {
-        type : String
+        type: String
     },
     name: {
         type: String
     },
-    description:{
-        type : String
+    description: {
+        type: String
     },
     price: {
         type: String
     },
-    status :{
-        type : Number,
-        default : 0
+    status: {
+        type: Number,
+        default: 1
     },
-    category : {
-        type : String
+    category: {
+        type: String
     }
 }, {
     timestamps: true
