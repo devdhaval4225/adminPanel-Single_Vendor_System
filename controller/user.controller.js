@@ -6,23 +6,24 @@ const Contect = require("../model/contectus.model");
 
 exports.insert = async (req, res) => {
     try {
-        const { email, username, name, mobile } = req.body;
+        console.log("::req.file::", req.file);
+        const { email, username, city, mobile, zipCode, password } = req.body;
         const checkEmail = await User.findOne({ email: email });
-
-        // const image = req.file.filename
-        console.log("::req.body::", req.body);
         const userId = Math.floor(Math.random() * 1000000).toString();
+        // const image = req.file.filename;
         const insertUser = new User({
-            userId : userId,
+            userId: userId,
             // image: image,
-            name: name,
             username: username,
             email: email,
+            city: city,
+            zipCode: zipCode,
+            password: password,
             mobile: mobile
         });
         const saveData = await insertUser.save();
-        console.log("::saveData::", saveData);
-        res.redirect("tables");
+        // console.log("::saveData::", saveData);
+        res.redirect("/tables");
 
     } catch (error) {
         console.log("::user-insert-ERROR::", error);
@@ -36,24 +37,25 @@ exports.insert = async (req, res) => {
 exports.edit = async (req, res, next) => {
     try {
         const id = req.params.id
-        const { name, username, email, mobile } = req.body;
+        const { email, username, city, mobile, zipCode, password, status } = req.body;
         console.log("req.body", req.body);
-        console.log("::req.file::", req.file);
-        console.log("::req.file::", req.file.filename);
 
-        const images = req.file.filename
-        console.log("::images::", images);
+        // const image = req.file.filename;
+        // console.log("::req.file::", req.file);
         const updateData = await User.findByIdAndUpdate(
             {
                 _id: id
             },
             {
                 $set: {
-                    image: images,
-                    name: name,
+                    // image: image,
                     username: username,
                     email: email,
-                    mobile: mobile
+                    city: city,
+                    zipCode: zipCode,
+                    password: password,
+                    mobile: mobile,
+                    status : status
                 }
             },
             {
@@ -78,8 +80,14 @@ exports.edit = async (req, res, next) => {
 
 exports.show = async (req, res, next) => {
     try {
-        const showData = await User.find();
-        req.data = showData
+        const showData = await User.find({});
+        const total = [];
+        for (const statusData of showData) {
+            if (statusData.status == 0 || statusData.status == 1) {
+                total.push(statusData);
+            }
+        }
+        req.data = total
         next();
     } catch (error) {
         console.log("::user-show-ERROR::", error);
@@ -93,7 +101,18 @@ exports.show = async (req, res, next) => {
 exports.userDelete = async (req, res, next) => {
     try {
         const id = req.params.id
-        const deleteData = await User.findByIdAndDelete({ _id: id })
+        const deleteData = await User.findByIdAndUpdate(
+            {
+                _id: id
+            },
+            {
+                $set: {
+                    status: 2
+                }
+            },
+            {
+                new: true
+            });
         res.redirect("/tables")
 
         console.log("::deleteData::", deleteData);

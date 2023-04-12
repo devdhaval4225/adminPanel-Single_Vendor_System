@@ -1,19 +1,23 @@
 const mongoose = require("mongoose");
-const itemId = Math.floor(Math.random() * 1000000).toString();
-
 const itemSchema = new mongoose.Schema({
     itemId : {
-        type : String,
-        default : itemId
+        type : String
     },
     image: {
         type : String
     },
-    itemname: {
+    name: {
         type: String
+    },
+    description:{
+        type : String
     },
     price: {
         type: String
+    },
+    status :{
+        type : Number,
+        default : 0
     },
     category : {
         type : String

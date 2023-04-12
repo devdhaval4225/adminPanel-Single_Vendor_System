@@ -15,7 +15,7 @@ exports.login = async (req, res) => {
             if (password == checkEmail.password) {
                 const token = jwt.sign({ _id: checkEmail._id.toString() }, process.env.USER_AUTH_TOKEN);
                 res.cookie("jwt", token, {
-                    expires: new Date(Date.now() + 30000000 * 3),
+                    expires: new Date(Date.now() + 3600),
                     httpOnly: true
                 })
                 const tokenGeneret = await Admin.findOneAndUpdate(
@@ -30,7 +30,7 @@ exports.login = async (req, res) => {
                     {
                         new: true
                     })
-                    res.redirect("/");
+                res.redirect("/");
             } else {
                 res.status(401).json({
                     message: "password not match",
@@ -47,3 +47,28 @@ exports.login = async (req, res) => {
     }
 }
 
+exports.logout = async (req, res) => {
+    try {
+        res.clearCookie("jwt");
+        // const id = req.user.id
+        // const removeToken = await Admin.findByIdAndUpdate(
+        //     {
+        //         _id : id
+        //     },
+        //     {
+        //         $set:{
+        //             token : ""
+        //         }
+        //     },
+        //     {
+        //         new : true
+        //     })
+        res.redirect("/sign-in");
+    } catch (error) {
+        console.log("::user-logout-ERROR::", error);
+        res.status(500).json({
+            message: "SOMETHING WENT WRONG",
+            status: 500
+        })
+    }
+}

@@ -65,7 +65,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="#">
+          <a class="nav-link text-white active bg-gradient-primary" href="http://localhost:3000/tables">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fa-solid fa-user"></i>
             </div>
@@ -125,7 +125,11 @@
         <form role="form" action="/item/item-update/<%= itemID.id %>" method="POST" class="text-start">
             <div class="input-group input-group-outline my-3">
               <label class="form-label"></label>
-              <input type="name" name="itemname" value="<%= itemID.itemname %>" class="form-control">
+              <input type="name" name="itemname" value="<%= itemID.name %>" class="form-control">
+            </div>
+            <div class="input-group input-group-outline mb-3">
+              <label class="form-label"></label>
+              <input type="text" name="description" value="<%= itemID.description %>" class="form-control">
             </div>
             <div class="input-group input-group-outline mb-3">
               <label class="form-label"></label>
@@ -134,6 +138,10 @@
             <div class="input-group input-group-outline my-3">
               <label class="form-label"></label>
               <input type="text" name="category" value="<%= itemID.category %>" class="form-control">
+            </div>
+            <div class="input-group input-group-outline my-3">
+              <label class="form-label"></label>
+              <input type="text" name="status" value="<%= itemID.status %>" class="form-control">
             </div>
             <div class="input-group input-group-outline my-3">
               <input type="file" name="image" value="<%= itemID.image %>" class="form-control">

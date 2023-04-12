@@ -18,9 +18,9 @@ const { allContect, showContect } = require("../controller/contectus.controller"
 const { testID, allTest, testDelete } = require("../controller/testimonial.controller");
 
 //? HOME ROUTE
-router.get('/', verifyUser, totalCount, async (req, res) => {
+router.get('/', verifyUser, totalCount,  async (req, res) => {
   total = req.total
-  res.render('dashboard.ejs', { total });
+  res.render('dashboard.ejs', {  total });
 });
 
 //? LOG IN
@@ -43,7 +43,9 @@ router.get('/user', verifyUser, async (req, res) => {
 
 //? ITEM
 router.get('/itemInsert', verifyUser, async (req, res) => {
-  res.render('itemInsert.ejs');
+  cate = res.catemessage
+  cateM = res.Catemessage 
+  res.render('itemInsert.ejs', { cate, cateM });
 });
 
 //? CATEGORY

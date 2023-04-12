@@ -9,13 +9,13 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         console.log(":::::::::::::::", file);
         let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-        let fileName = "";
+        let opopop = "";
         for (let i = 1; i <= 6; i++) {
             const nCode = Math.floor(Math.random() * chars.length);
-            fileName += chars[nCode];
+            opopop += chars[nCode];
         }
 
-        cb(null, Date.now() + '-' + fileName + path.extname(file.originalname));
+        cb(null, Date.now() + '-' + opopop + path.extname(file.originalname));
     },
 });
 
