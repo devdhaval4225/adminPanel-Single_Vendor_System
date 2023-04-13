@@ -14,8 +14,8 @@ router.get('/profile/:id', showOne);
 
 
 
-const { Iteminsert, updateItem, itemShow, itemById, deleteItem } = require("../controller/item.controller");
-const { showOneCategory, showCategory, deleteCategory } = require("../controller/category.controller");
+const {  itemShow, itemById, deleteItem } = require("../controller/item.controller");
+const {  showOneCategory, showCategory, deleteCategory, activeCate } = require("../controller/category.controller");
 const { allContect, showContect } = require("../controller/contectus.controller");
 const { testID, allTest, testDelete } = require("../controller/testimonial.controller");
 
@@ -39,17 +39,9 @@ router.get('/user', verifyUser, async (req, res) => {
 });
 
 //? ITEM
-router.get('/itemInsert', verifyUser, async (req, res, next) => {
-  // if (req.cateNot == false) {
-
-  // } else {
-  const catcat = req.cateNot;
-  const noCategory = "category Not found";
-  const noActiveCategory = "category Not Active";
-  console.log("987",catcat);
-  res.render('itemInsert.ejs', { noCategory, noActiveCategory, catcat });
-  next();
-  // }
+router.get('/itemInsert', verifyUser, activeCate,  async (req, res) => {
+  showActive = req.acCate
+  res.render('itemInsert.ejs', { showActive });
 });
 
 //? CATEGORY
@@ -74,11 +66,10 @@ router.get('/tables', verifyUser, show, async (req, res) => {
   res.render("tables", { allUser })
 });
 
-//! ITEM
+//? ITEM
 router.get('/item', verifyUser, itemShow, async (req, res) => {
   item = req.item
-  cate = req.cateNot
-  res.render('item.ejs', { item, cate });
+  res.render('item.ejs', { item });
 });
 
 //? CATEGORY
@@ -111,19 +102,11 @@ router.get('/profile-view/:id', verifyUser, showOne, function (req, res, next) {
   res.render("userEdit.ejs", { one });
 });
 
-//! ITEM
-router.get('/item-view/:id', verifyUser, itemById, updateItem, async (req, res) => {
-
-
+//? ITEM
+router.get('/item-view/:id', verifyUser, activeCate, itemById,  async (req, res) => {
   const itemID = req.itembyid;
-
-  const cateUP = req.c1234;
-  console.log("::cateUP::", cateUP);
-  const cateMUP = req.CateUPStatus;
-  console.log("::cateMUP::", cateMUP);
-
-
-  res.render('itemEdit.ejs', { cateUP, cateMUP, itemID });
+  const showActive = req.acCate
+  res.render('itemEdit.ejs', { itemID, showActive });
 });
 
 //? CATEGORY

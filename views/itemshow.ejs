@@ -109,12 +109,14 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="http://localhost:3000/sign-in">
+          <form action="/admin/logout" method="get">
+          <a class="nav-link text-white" href="http://localhost:3000/sign-in">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">login</i>
+              <i class="material-icons opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Sign In</span>
+            <button type="submit" value="submit" style="background-color: transparent; border-style: none; color: white;">Log Out</button>
           </a>
+        </form>
         </li>
       </ul>
     </div>
@@ -154,7 +156,7 @@
                 <div class="card-body p-3">
                   <hr class="horizontal gray-light my-4">
                   <ul class="list-group">
-                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Item Name: </strong> &nbsp;  <%= itemID.itemname %></li>
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Item Name: </strong> &nbsp;  <%= itemID.name %></li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Price:</strong> &nbsp;<%= itemID.price %> </li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Status:</strong> &nbsp;<%= itemID.status %> </li>
                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Category:</strong> &nbsp;<%= itemID.category %> </li>

@@ -67,7 +67,18 @@ exports.showCategory = async (req, res, next) => {
 exports.deleteCategory = async (req, res) => {
     try {
         const id = req.params.id
-        const deleteData = await Category.findByIdAndDelete({ _id: id })
+        const deleteData = await Category.findByIdAndUpdate(
+            {
+                _id: id
+            },
+            {
+                $set: {
+                    status: 0
+                }
+            },
+            {
+                new: true
+            })
 
         res.redirect("/category");
         console.log("::deleteData::", deleteData);
@@ -88,6 +99,32 @@ exports.showOneCategory = async (req, res, next) => {
         next();
     } catch (error) {
         console.log("::category-deleteCategory-ERROR::", error);
+        res.status(500).json({
+            message: "something went wrong",
+            status: 500
+        })
+    }
+}
+
+
+exports.activeCate = async (req, res, next) => {
+    try {
+        const showAllItem = await Category.find({}).select({ name: 1, status: 1 });
+        // console.log("::showAllItem::", showAllItem);
+        const totalItem = [];
+        for (const statusItem of showAllItem) {
+            if (statusItem.status == 1) {
+                const catename = statusItem.name;
+                totalItem.push(catename);
+            }
+        }
+
+        console.log("::totalItem::", totalItem);
+        req.acCate = totalItem
+        next();
+
+    } catch (error) {
+        console.log("::item-itemShow-ERROR::", error);
         res.status(500).json({
             message: "something went wrong",
             status: 500
